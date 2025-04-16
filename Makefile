@@ -16,7 +16,7 @@ SRC = ./source/main.c
 OBJ = ${SRC:.c=.o}
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -I./libft/include
 
 LIBFT = ./libft/libft.a
 LIBFTSRC = ./libft
@@ -24,7 +24,7 @@ LIBFTSRC = ./libft
 all: $(NAME)
 
 $(NAME): $(OBJ) $(LIBFT)
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(LIBFT)
 	
 $(LIBFT):
 	@make -C $(LIBFTSRC)
