@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "../include/minirt.h"
-#include <fcntl.h>
 
 int	main(void)
 {
@@ -28,5 +27,6 @@ int	main(void)
 		write(1, line, ft_strlen(line));
 		line = get_next_line(fd);
 	}
+	close(fd);
 	return (0);
 }
