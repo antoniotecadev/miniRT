@@ -11,8 +11,48 @@
 /* ************************************************************************** */
 
 #ifndef MINIRT_H
-#define MINIRT_H
+# define MINIRT_H
 
-#include "../libft/libft.h"
+# include "../libft/libft.h"
 
+typedef struct s_vec3
+{
+	double	x;
+	double	y;
+	double	z;
+}		t_vec3;
+
+typedef struct s_color
+{
+	int	r;
+	int	g;
+	int	b;
+}		t_color;
+
+typedef struct s_ambient_light
+{
+	double	ratio;
+	t_color	color;
+}		t_ambient_light;
+
+typedef struct s_camera
+{
+	t_vec3	position;
+	t_vec3	direction;
+	double	fov;
+}		t_camera;
+
+typedef struct s_light
+{
+	t_vec3		position;
+	double		brightness;
+	t_color		color;
+}	t_light;
+
+typedef struct s_scene
+{
+	t_ambient_light	ambient_light;
+	t_camera	camera;
+	t_light		light;
+}		t_scene;
 #endif

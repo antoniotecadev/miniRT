@@ -12,21 +12,13 @@
 
 #include "../include/minirt.h"
 
-int	main(void)
+int	main(int argc, char **argv)
 {
-	char	*str;
-
-	str = "Hello World! MiniRT\n";
-	write(1, str, ft_strlen(str));
-	int fd = open("Makefile", O_RDONLY);
-	if (fd < 0)
-		write(1, "Error\n", 6);
-	char *line = get_next_line(fd);
-	while (line)
+	if (argc != 2)
 	{
-		write(1, line, ft_strlen(line));
-		line = get_next_line(fd);
+		ft_putstr_fd("Usage: ./miniRT <scene.rt>\n", 2);
+		return (1);
 	}
-	close(fd);
+	(void)argv;
 	return (0);
 }

@@ -72,6 +72,6 @@ t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 #  define BUFFER_SIZE 42
 # endif 
 
-char	*get_next_line(int fd);
+char		*get_next_line(int fd);
 
 #endif
