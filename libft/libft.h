@@ -22,6 +22,8 @@ int			ft_isdigit(int c);
 int			ft_isalnum(int c);
 int			ft_isascii(int c);
 int			ft_isprint(int c);
+int			ft_isspace(int c);
+int			ft_strisspace(const char *str);
 size_t		ft_strlen(const char *str);
 void		*ft_memset(void *ptr, int x, size_t n);
 void		ft_bzero(void *ptr, size_t n);
@@ -42,7 +44,7 @@ int			ft_atoi(const char *str);
 void		*ft_calloc(size_t nitems, size_t size);
 char		*ft_strdup(const char *s);
 char		*ft_substr(char const *s, unsigned int start, size_t len);
-char		*ft_strjoin(char const *s1, char const *s2);
+char		*ft_strjoin(char *s1, char *s2);
 char		*ft_strtrim(char const *s1, char const *set);
 char		**ft_split(char const *s, char c);
 char		*ft_itoa(int n);
@@ -70,7 +72,7 @@ void		ft_lstiter(t_list *lst, void (*f)(void *));
 t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
+#  define BUFFER_SIZE 8192
 # endif 
 
 char		*get_next_line(int fd);

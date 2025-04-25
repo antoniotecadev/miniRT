@@ -50,6 +50,12 @@ void	parse_scene(char *file, t_scene *scene)
 		line = get_next_line(fd);
 		if (!line)
 			break ;
+		if (ft_strisspace(line))
+		{
+			ft_putstr_fd("line is empty\n", 1);
+			free(line);
+			continue ;
+		}	
 		free(line);
 	}
 	close(fd);
