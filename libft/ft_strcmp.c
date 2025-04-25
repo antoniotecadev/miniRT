@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ateca <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/03 16:44:02 by ateca             #+#    #+#             */
-/*   Updated: 2025/04/03 16:44:18 by ateca            ###   ########.fr       */
+/*   Created: 2025/04/25 13:49:23 by ateca             #+#    #+#             */
+/*   Updated: 2025/04/25 13:49:28 by ateca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minirt.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+int	ft_strcmp(const char *str1, const char *str2)
 {
-	char	*file;
-	t_scene scene;
+	size_t	i;
 
-	if (argc != 2)
+	i = 0;
+	while (str1[i] && str2[i])
 	{
-		ft_putstr_fd("Usage: ./miniRT <scene.rt>\n", 2);
-		return (1);
+		if (str1[i] != str2[i])
+			break ;
+		i++;
 	}
-	file = argv[1];
-	parse_scene(file, &scene);
-	return (0);
+	return ((unsigned char)str1[i] - (unsigned char)str2[i]);
 }

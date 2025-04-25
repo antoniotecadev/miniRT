@@ -52,7 +52,10 @@ typedef struct s_light
 typedef struct s_scene
 {
 	t_ambient_light	ambient_light;
-	t_camera	camera;
-	t_light		light;
+	t_camera		camera;
+	t_light			light;
 }		t_scene;
+
+void	parse_scene(char *file, t_scene *scene);
+
 #endif
