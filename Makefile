@@ -12,7 +12,7 @@
 
 NAME = miniRT
 
-SRC = ./source/main.c ./source/parser.c
+SRC = ./source/main.c ./source/parse/parser.c ./source/parse/parse_ambient_light.c
 OBJ = ${SRC:.c=.o}
 
 CC = cc

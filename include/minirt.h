@@ -14,6 +14,7 @@
 # define MINIRT_H
 
 # include "../libft/libft.h"
+# include <stdio.h>
 
 typedef struct s_vec3
 {
@@ -52,10 +53,12 @@ typedef struct s_light
 typedef struct s_scene
 {
 	t_ambient_light	ambient_light;
+	int			number_ambient_light;
 	t_camera		camera;
 	t_light			light;
 }		t_scene;
 
 void	parse_scene(char *file, t_scene *scene);
+void	parse_ambient_light(char *line, t_scene *scene);
 
 #endif
