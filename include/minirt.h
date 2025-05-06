@@ -53,7 +53,7 @@ typedef struct s_light
 typedef struct s_scene
 {
 	t_ambient_light	ambient_light;
-	int			number_ambient_light;
+	int				number_ambient_light;
 	t_camera		camera;
 	t_light			light;
 }		t_scene;

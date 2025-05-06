@@ -58,7 +58,7 @@ void	parse_scene(char *file, t_scene *scene)
 	int		fd;
 	char	*line;
 
-	fd = open_and_validate_file(file);		
+	fd = open_and_validate_file(file);
 	initialize_number_scene_element(scene);
 	while (1)
 	{
