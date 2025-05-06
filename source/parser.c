@@ -22,20 +22,23 @@ int	is_rt_extension(char *file)
 	return (0);
 }
 
-void	open_and_validate_file(char *file, int *fd)
+int	open_and_validate_file(char *file)
 {
-	*fd = open(file, O_RDONLY);
-	if (*fd == -1)
+	int	fd;
+
+	fd = open(file, O_RDONLY);
+	if (fd == -1)
 	{
 		ft_putstr_fd("Error: File not found or unable to open\n", 2);
 		exit(2);
 	}
 	if (!is_rt_extension(file))
 	{
-		close(*fd);
+		close(fd);
 		ft_putstr_fd("Invalid file extension, expected .rt\n", 2);
 		exit(2);
 	}
+	return (fd);
 }
 
 void	parse_scene(char *file, t_scene *scene)
@@ -44,7 +47,7 @@ void	parse_scene(char *file, t_scene *scene)
 	char	*line;
 
 	(void)scene;
-	open_and_validate_file(file, &fd);
+	fd = open_and_validate_file(file);
 	while (1)
 	{
 		line = get_next_line(fd);

@@ -15,7 +15,7 @@
 int	main(int argc, char **argv)
 {
 	char	*file;
-	t_scene scene;
+	t_scene	scene;
 
 	if (argc != 2)
 	{
