@@ -12,7 +12,7 @@
 
 #include "../../include/minirt.h"
 
-void	exit_and_clear_gnl_buffer(char *line, int fd)
+void	free_gnl_buffer_and_exit(char *line, int fd)
 {
 	char	*buffer;
 
@@ -26,4 +26,18 @@ void	exit_and_clear_gnl_buffer(char *line, int fd)
 	}
 	close(fd);
 	exit(1);
+}
+
+void	free_tokens(char **tokens)
+{
+	int	i;
+
+	i = 0;
+	while (tokens != NULL && tokens[i] != NULL)
+	{
+		free(tokens[i]);
+		tokens[i] = NULL;
+		i++;
+	}
+	free(tokens);
 }

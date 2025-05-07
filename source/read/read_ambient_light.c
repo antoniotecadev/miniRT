@@ -14,10 +14,21 @@
 
 void	read_ambient_light(char *line, int fd, t_scene *scene)
 {
+	char	**tokens;
+
+	tokens = ft_split(line, ' ');
 	if (scene->number_ambient_light >= 1)
 	{
-		printf("Error: Ambient light can only be defined once\n");
-		exit_and_clear_gnl_buffer(line, fd);
+		printf("Error: Ambient light can only be defined once: %s", line);
+		free_tokens(tokens);
+		free_gnl_buffer_and_exit(line, fd);
+	}
+	if (tokens == NULL || tokens[0] == NULL || tokens[1] == NULL || tokens[2] == NULL)
+	{
+		printf("Error: Ambient Light format: 'A ratio R,G,B': %s", line);
+		free_tokens(tokens);
+		free_gnl_buffer_and_exit(line, fd);
 	}
 	scene->number_ambient_light = 1;
+	free_tokens(tokens);
 }

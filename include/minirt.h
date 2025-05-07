@@ -60,6 +60,7 @@ typedef struct s_scene
 
 void	read_scene(char *file, t_scene *scene);
 void	read_ambient_light(char *line, int fd, t_scene *scene);
-void	exit_and_clear_gnl_buffer(char *line, int fd);
+void	free_gnl_buffer_and_exit(char *line, int fd);
+void	free_tokens(char **tokens);
 
 #endif
