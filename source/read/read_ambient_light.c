@@ -23,7 +23,8 @@ void	read_ambient_light(char *line, int fd, t_scene *scene)
 		free_tokens(tokens);
 		free_gnl_buffer_and_exit(line, fd);
 	}
-	if (tokens == NULL || tokens[0] == NULL || tokens[1] == NULL || tokens[2] == NULL)
+	if (tokens == NULL || number_tokens(tokens) != 3
+		|| tokens[0] == NULL || tokens[1] == NULL || tokens[2] == NULL)
 	{
 		printf("Error: Ambient Light format: 'A ratio R,G,B': %s", line);
 		free_tokens(tokens);

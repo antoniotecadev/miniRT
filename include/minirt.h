@@ -63,4 +63,7 @@ void	read_ambient_light(char *line, int fd, t_scene *scene);
 void	free_gnl_buffer_and_exit(char *line, int fd);
 void	free_tokens(char **tokens);
 
+int	number_tokens(char **tokens);
+
+
 #endif
