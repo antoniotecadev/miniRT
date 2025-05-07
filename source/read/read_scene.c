@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.c                                           :+:      :+:    :+:   */
+/*   read_scene.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ateca <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 17:00:15 by ateca             #+#    #+#             */
-/*   Updated: 2025/04/23 17:00:18 by ateca            ###   ########.fr       */
+/*   Updated: 2025/05/07 12:10:09 by ateca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	initialize_number_scene_element(t_scene *scene)
 void	check_scene_element(char *line, int *i, int fd, t_scene *scene)
 {
 	if (ft_strncmp(&line[*i], "A", 1) == 0)
-		parse_ambient_light(line, fd, scene);
+		read_ambient_light(line, fd, scene);
 }
 
 int	is_rt_extension(char *file)
@@ -52,7 +52,7 @@ int	open_and_validate_file(char *file)
 	return (fd);
 }
 
-void	parse_scene(char *file, t_scene *scene)
+void	read_scene(char *file, t_scene *scene)
 {
 	int		i;
 	int		fd;

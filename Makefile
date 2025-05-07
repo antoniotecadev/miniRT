@@ -6,13 +6,13 @@
 #    By: ateca <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/03 16:26:02 by ateca             #+#    #+#              #
-#    Updated: 2025/04/03 16:42:46 by ateca            ###   ########.fr        #
+#    Updated: 2025/05/07 12:06:37 by ateca            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = miniRT
 
-SRC = ./source/main.c ./source/parse/parser.c ./source/parse/parse_ambient_light.c \
+SRC = ./source/main.c ./source/read/read_scene.c ./source/read/read_ambient_light.c \
       ./source/utility/free_utils.c
 OBJ = ${SRC:.c=.o}
 

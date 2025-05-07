@@ -6,7 +6,7 @@
 /*   By: ateca <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 16:37:28 by ateca             #+#    #+#             */
-/*   Updated: 2025/04/16 16:37:29 by ateca            ###   ########.fr       */
+/*   Updated: 2025/05/07 12:07:31 by ateca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ typedef struct s_scene
 	t_light			light;
 }		t_scene;
 
-void	parse_scene(char *file, t_scene *scene);
-void	parse_ambient_light(char *line, int fd, t_scene *scene);
+void	read_scene(char *file, t_scene *scene);
+void	read_ambient_light(char *line, int fd, t_scene *scene);
 void	exit_and_clear_gnl_buffer(char *line, int fd);
 
 #endif
