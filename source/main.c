@@ -19,7 +19,7 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 	{
-		ft_putstr_fd("Usage: ./miniRT <scene.rt>\n", 2);
+		printf("Usage: ./miniRT <scene.rt>\n");
 		return (1);
 	}
 	file = argv[1];
