@@ -17,10 +17,10 @@ void	initialize_number_scene_element(t_scene *scene)
 	scene->number_ambient_light = 0;
 }
 
-void	check_scene_element(char *line, int *i, t_scene *scene)
+void	check_scene_element(char *line, int *i, int fd, t_scene *scene)
 {
 	if (ft_strncmp(&line[*i], "A", 1) == 0)
-		parse_ambient_light(line, scene);
+		parse_ambient_light(line, fd, scene);
 }
 
 int	is_rt_extension(char *file)
@@ -47,7 +47,7 @@ int	open_and_validate_file(char *file)
 	{
 		close(fd);
 		printf("Error: Invalid file extension, expected .rt\n");
-		exit(2);
+		exit(1);
 	}
 	return (fd);
 }
@@ -73,7 +73,7 @@ void	parse_scene(char *file, t_scene *scene)
 		i = 0;
 		while (line[i] && ft_isspace(line[i]))
 			i++;
-		check_scene_element(line, &i, scene);
+		check_scene_element(line, &i, fd, scene);
 		free(line);
 	}
 	close(fd);

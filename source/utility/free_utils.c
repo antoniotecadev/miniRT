@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_ambient_light.c                              :+:      :+:    :+:   */
+/*   free_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ateca <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/06 15:57:45 by ateca             #+#    #+#             */
-/*   Updated: 2025/05/06 15:57:46 by ateca            ###   ########.fr       */
+/*   Created: 2025/05/07 11:41:43 by ateca             #+#    #+#             */
+/*   Updated: 2025/05/07 11:41:45 by ateca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minirt.h"
 
-void	parse_ambient_light(char *line, int fd, t_scene *scene)
+void	exit_and_clear_gnl_buffer(char *line, int fd)
 {
-	if (scene->number_ambient_light >= 1)
+	char	*buffer;
+
+	free(line);
+	while (1)
 	{
-		printf("Error: Ambient light can only be defined once\n");
-		exit_and_clear_gnl_buffer(line, fd);
+		buffer = get_next_line(fd);
+		if (!buffer)
+			break ;
+		free(buffer);
 	}
-	scene->number_ambient_light = 1;
+	close(fd);
+	exit(1);
 }

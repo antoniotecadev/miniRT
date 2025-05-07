@@ -59,6 +59,7 @@ typedef struct s_scene
 }		t_scene;
 
 void	parse_scene(char *file, t_scene *scene);
-void	parse_ambient_light(char *line, t_scene *scene);
+void	parse_ambient_light(char *line, int fd, t_scene *scene);
+void	exit_and_clear_gnl_buffer(char *line, int fd);
 
 #endif
