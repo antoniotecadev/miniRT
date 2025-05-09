@@ -30,6 +30,8 @@ void	read_ambient_light(char *line, int fd, t_scene *scene)
 		free_tokens(tokens);
 		free_gnl_buffer_and_exit(line, fd);
 	}
+	scene->ambient_light.ratio = ft_atof(tokens[1]);
+	printf("ratio: %f\n", scene->ambient_light.ratio);
 	scene->number_ambient_light = 1;
 	free_tokens(tokens);
 }
