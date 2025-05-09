@@ -24,5 +24,9 @@ int	main(int argc, char **argv)
 	}
 	file = argv[1];
 	read_scene(file, &scene);
+	printf("Ambient Light:\n");
+	printf("  Ratio: %.1f\n", scene.ambient_light.ratio);
+	printf("  Color: R=%d, G=%d, B=%d\n", scene.ambient_light.color.r, 
+	scene.ambient_light.color.g, scene.ambient_light.color.b);
 	return (0);
 }
