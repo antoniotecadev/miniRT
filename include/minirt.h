@@ -65,4 +65,6 @@ void	free_tokens(char **tokens);
 
 int		number_tokens(char **tokens);
 
+t_color	read_color(char *line, int fd, char *rgb, char **tokens);
+
 #endif

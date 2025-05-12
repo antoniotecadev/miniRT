@@ -13,7 +13,8 @@
 NAME = miniRT
 
 SRC = ./source/main.c ./source/read/read_scene.c ./source/read/read_ambient_light.c \
-      ./source/utility/free_utils.c ./source/utility/tokens_utils.c
+      ./source/utility/free_utils.c ./source/utility/tokens_utils.c \
+      ./source/read/read_color.c
 OBJ = ${SRC:.c=.o}
 
 CC = cc
