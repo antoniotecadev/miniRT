@@ -54,6 +54,14 @@ t_color	read_color(char *line, int fd, char *rgb, char **tokens)
 	color.r = ft_atoi(red);
 	color.g = ft_atoi(green);
 	color.b = ft_atoi(blue);
+	if (color.r < 0 || color.r > 255 || color.g < 0 || color.g > 255
+		|| color.b < 0 || color.b > 255)
+	{
+		printf("Error: Color must be in the range 0-255: 'R,G,B': %s", line);
+		free_tokens(color_tokens);
+		free_tokens(tokens);
+		free_gnl_buffer_and_exit(line, fd);
+	}
 	free_tokens(color_tokens);
 	return (color);
 }
