@@ -25,6 +25,7 @@ int			ft_isprint(int c);
 int			ft_isspace(int c);
 int			ft_strisspace(const char *str);
 int			ft_isnumber(const char *str);
+int			ft_isdouble(const char *str);
 size_t		ft_strlen(const char *str);
 void		*ft_memset(void *ptr, int x, size_t n);
 void		ft_bzero(void *ptr, size_t n);

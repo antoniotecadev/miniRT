@@ -12,26 +12,41 @@
 
 #include "../../include/minirt.h"
 
+void	is_isdouble(const char *str, char *line, int fd, char **tokens)
+{
+	if (ft_isdouble(str) == 0)
+	{
+		printf("Error: Ratio is not number: 'ratio': %s", line);
+		free_tokens(tokens);
+		free_gnl_buffer_and_exit(line, fd);
+	}
+}
+
 void	read_ambient_light(char *line, int fd, t_scene *scene)
 {
 	char	**tokens;
+	char	*ratio;
+	char	*color;
 
 	tokens = ft_split(line, ' ');
+	ratio = tokens[1];
+	color = tokens[2];
 	if (scene->number_ambient_light >= 1)
 	{
 		printf("Error: Ambient light can only be defined once: %s", line);
 		free_tokens(tokens);
 		free_gnl_buffer_and_exit(line, fd);
 	}
-	if (tokens == NULL || number_tokens(tokens) != 3
-		|| tokens[0] == NULL || tokens[1] == NULL || tokens[2] == NULL)
+	if (tokens == NULL || number_tokens(tokens) != 3 || tokens[0] == NULL
+		|| ratio == NULL || color == NULL)
 	{
 		printf("Error: Ambient Light format: 'A ratio R,G,B': %s", line);
 		free_tokens(tokens);
 		free_gnl_buffer_and_exit(line, fd);
 	}
-	scene->ambient_light.ratio = ft_atof(tokens[1]);
-	scene->ambient_light.color = read_color(line, fd, tokens[2], tokens);
+	is_isdouble(ratio, line, fd, tokens);
+	scene->ambient_light.ratio = ft_atof(ratio);
+	scene->ambient_light.color = read_color(line, fd, color, tokens);
 	scene->number_ambient_light = 1;
 	free_tokens(tokens);
 }
