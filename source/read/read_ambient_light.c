@@ -12,7 +12,7 @@
 
 #include "../../include/minirt.h"
 
-void	is_isdouble(const char *str, char *line, int fd, char **tokens)
+void	ratio_is_double(const char *str, char *line, int fd, char **tokens)
 {
 	if (ft_isdouble(str) == 0)
 	{
@@ -44,7 +44,7 @@ void	read_ambient_light(char *line, int fd, t_scene *scene)
 		free_tokens(tokens);
 		free_gnl_buffer_and_exit(line, fd);
 	}
-	is_isdouble(ratio, line, fd, tokens);
+	ratio_is_double(ratio, line, fd, tokens);
 	scene->ambient_light.ratio = ft_atof(ratio);
 	scene->ambient_light.color = read_color(line, fd, color, tokens);
 	scene->number_ambient_light = 1;

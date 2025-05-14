@@ -23,7 +23,7 @@ int	ft_isdouble(const char *str)
 	has_dot = 0;
 	if (str[i] == '-')
 		i++;
-	while (str[i] != '\0')
+	while (str[i] != '\0' && str[i] != '\n')
 	{
 		if (ft_isdigit(str[i]))
 			has_digit = 1;
