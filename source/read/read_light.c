@@ -14,7 +14,6 @@
 
 void	brightness_is_double(const char *str, char *line, int fd, char **tokens)
 {
-	printf("brightness: %ld\n", ft_strlen(str));
 	if (ft_isdouble(str) == 0)
 	{
 		printf("Error: Brightness is not number: 'brightness': %s", line);
