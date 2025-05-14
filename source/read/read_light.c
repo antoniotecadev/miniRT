@@ -29,7 +29,6 @@ void	read_light(char *line, int fd, t_scene *scene)
 	char	*brightness;
 
 	tokens = ft_split(line, ' ');
-	brightness = tokens[2];
 	if (scene->number_light >= 1)
 	{
 		printf("Error: Light can only be defined once: %s", line);
@@ -37,12 +36,13 @@ void	read_light(char *line, int fd, t_scene *scene)
 		free_gnl_buffer_and_exit(line, fd);
 	}
 	if (tokens == NULL || number_tokens(tokens) != 3 || tokens[0] == NULL
-		|| brightness == NULL)
+		|| tokens[2] == NULL)
 	{
 		printf("Error: Light format: 'L position brightness': %s", line);
 		free_tokens(tokens);
 		free_gnl_buffer_and_exit(line, fd);
 	}
+	brightness = tokens[2];
 	brightness_is_double(brightness, line, fd, tokens);
 	scene->light.brightness = ft_atof(brightness);
 	scene->number_light = 1;
