@@ -47,10 +47,10 @@ t_color	read_color(char *line, int fd, char *rgb, char **tokens)
 	char	**color_tokens;
 
 	color_tokens = ft_split(rgb, ',');
+	format_is_valid(line, fd, color_tokens, tokens);
 	red = color_tokens[0];
 	green = color_tokens[1];
 	blue = color_tokens[2];
-	format_is_valid(line, fd, color_tokens, tokens);
 	color.r = ft_atoi(red);
 	color.g = ft_atoi(green);
 	color.b = ft_atoi(blue);
