@@ -35,5 +35,7 @@ int	main(int argc, char **argv)
 	printf("\nCamera:\n");
 	printf("  Position: x=%.1f, y=%.1f, z=%.1f\n", scene.camera.position.x,
 		scene.camera.position.y, scene.camera.position.z);
+	printf("  Direction: x=%.1f, y=%.1f, z=%.1f\n", scene.camera.direction.x,
+		scene.camera.direction.y, scene.camera.direction.z);
 	return (0);
 }
