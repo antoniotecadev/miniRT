@@ -12,25 +12,24 @@
 
 #include "../../include/minirt.h"
 
-double	read_brigh(double brightness, char *line, int fd, char **tokens)
+double	read_brightness(char *brightness, char *line, int fd, char **tokens)
 {
-	if (brightness < 0.0 || brightness > 1.0)
-	{
-		printf("Error: Brightness must be in the range [0.0,1.0]: %s", line);
-		free_tokens(tokens);
-		free_gnl_buffer_and_exit(line, fd);
-	}
-	return (brightness);
-}
+	double	bright;
 
-void	brightness_is_double(const char *str, char *line, int fd, char **tokens)
-{
-	if (ft_isdouble(str) == 0)
+	if (ft_isdouble(brightness) == 0)
 	{
 		printf("Error: Brightness is not number: 'brightness': %s", line);
 		free_tokens(tokens);
 		free_gnl_buffer_and_exit(line, fd);
 	}
+	bright = ft_atof(brightness);
+	if (bright < 0.0 || bright > 1.0)
+	{
+		printf("Error: Brightness must be in the range [0.0,1.0]: %s", line);
+		free_tokens(tokens);
+		free_gnl_buffer_and_exit(line, fd);
+	}
+	return (bright);
 }
 
 void	read_light(char *line, int fd, t_scene *scene)
@@ -53,8 +52,7 @@ void	read_light(char *line, int fd, t_scene *scene)
 		free_gnl_buffer_and_exit(line, fd);
 	}
 	brightness = tokens[2];
-	brightness_is_double(brightness, line, fd, tokens);
-	scene->light.brightness = read_brigh(ft_atof(brightness), line, fd, tokens);
+	scene->light.brightness = read_brightness(brightness, line, fd, tokens);
 	scene->number_light = 1;
 	free_tokens(tokens);
 }
