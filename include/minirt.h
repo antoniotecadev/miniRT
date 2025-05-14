@@ -56,10 +56,12 @@ typedef struct s_scene
 	int				number_ambient_light;
 	t_camera		camera;
 	t_light			light;
+	int				number_light;
 }		t_scene;
 
 void	read_scene(char *file, t_scene *scene);
 void	read_ambient_light(char *line, int fd, t_scene *scene);
+void	read_light(char *line, int fd, t_scene *scene);
 void	free_gnl_buffer_and_exit(char *line, int fd);
 void	free_tokens(char **tokens);
 
