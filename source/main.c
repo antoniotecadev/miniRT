@@ -30,7 +30,10 @@ int	main(int argc, char **argv)
 		scene.ambient_light.color.g, scene.ambient_light.color.b);
 	printf("\nLight:\n");
 	printf("  Position: x=%.1f, y=%.1f, z=%.1f\n", scene.light.position.x,
-	scene.light.position.y, scene.light.position.z);
+		scene.light.position.y, scene.light.position.z);
 	printf("  Brightness: %.1f\n", scene.light.brightness);
+	printf("\nCamera:\n");
+	printf("  Position: x=%.1f, y=%.1f, z=%.1f\n", scene.camera.position.x,
+		scene.camera.position.y, scene.camera.position.z);
 	return (0);
 }

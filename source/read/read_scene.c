@@ -15,6 +15,7 @@
 void	initialize_number_scene_element(t_scene *scene)
 {
 	scene->number_ambient_light = 0;
+	scene->number_camera = 0;
 	scene->number_light = 0;
 }
 
@@ -22,6 +23,8 @@ void	check_scene_element(char *line, int *i, int fd, t_scene *scene)
 {
 	if (ft_strncmp(&line[*i], "A", 1) == 0)
 		read_ambient_light(line, fd, scene);
+	else if (ft_strncmp(&line[*i], "C", 1) == 0)
+		read_camera(line, fd, scene);
 	else if (ft_strncmp(&line[*i], "L", 1) == 0)
 		read_light(line, fd, scene);
 }
