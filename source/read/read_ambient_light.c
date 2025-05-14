@@ -12,6 +12,17 @@
 
 #include "../../include/minirt.h"
 
+double	read_ratio(double ratio, char *line, int fd, char **tokens)
+{
+	if (ratio < 0.0 || ratio > 1.0)
+	{
+		printf("Error: Ratio must be in the range [0.0,1.0]: %s", line);
+		free_tokens(tokens);
+		free_gnl_buffer_and_exit(line, fd);
+	}
+	return (ratio);
+}
+
 void	ratio_is_double(const char *str, char *line, int fd, char **tokens)
 {
 	if (ft_isdouble(str) == 0)
@@ -45,7 +56,7 @@ void	read_ambient_light(char *line, int fd, t_scene *scene)
 	ratio = tokens[1];
 	color = tokens[2];
 	ratio_is_double(ratio, line, fd, tokens);
-	scene->ambient_light.ratio = ft_atof(ratio);
+	scene->ambient_light.ratio = read_ratio(ft_atof(ratio), line, fd, tokens);
 	scene->ambient_light.color = read_color(line, fd, color, tokens);
 	scene->number_ambient_light = 1;
 	free_tokens(tokens);
