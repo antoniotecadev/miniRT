@@ -29,6 +29,8 @@ int	main(int argc, char **argv)
 	printf("  Color: R=%d, G=%d, B=%d\n", scene.ambient_light.color.r,
 		scene.ambient_light.color.g, scene.ambient_light.color.b);
 	printf("\nLight:\n");
+	printf("  Position: x=%.1f, y=%.1f, z=%.1f\n", scene.light.position.x,
+	scene.light.position.y, scene.light.position.z);
 	printf("  Brightness: %.1f\n", scene.light.brightness);
 	return (0);
 }
