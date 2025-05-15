@@ -15,7 +15,8 @@ NAME = miniRT
 SRC = ./source/main.c ./source/read/read_scene.c ./source/read/read_ambient_light.c \
       ./source/utility/free_utils.c ./source/utility/tokens_utils.c \
       ./source/read/read_color.c ./source/read/read_light.c ./source/read/read_camera.c \
-      ./source/read/read_position.c
+      ./source/read/read_position.c ./source/vector/vec3_length.c \
+      ./source/vector/vec3_normalize.c 
 OBJ = ${SRC:.c=.o}
 
 CC = cc
@@ -27,7 +28,7 @@ LIBFTSRC = ./libft
 all: $(NAME)
 
 $(NAME): $(OBJ) $(LIBFT)
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(LIBFT)
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(LIBFT) -lm
 	
 $(LIBFT):
 	@make -C $(LIBFTSRC)

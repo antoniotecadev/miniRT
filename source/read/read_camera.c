@@ -58,6 +58,13 @@ t_vec3	read_direction(char *xyz, char *line, int fd, char **tokens)
 		free_tokens(tokens);
 		free_gnl_buffer_and_exit(line, fd);
 	}
+	direction = vec3_normalize(direction);
+	if (direction.x == 0 && direction.y == 0 && direction.z == 0)
+	{
+		printf("Error: Direction camera cannot be zeros: %s", line);
+		free_tokens(tokens);
+		free_gnl_buffer_and_exit(line, fd);
+	}
 	return (direction);
 }
 

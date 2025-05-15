@@ -15,6 +15,7 @@
 
 # include "../libft/libft.h"
 # include <stdio.h>
+# include <math.h>
 
 typedef struct s_vec3
 {
@@ -70,6 +71,10 @@ void	free_tokens(char **tokens);
 int		number_tokens(char **tokens);
 
 t_color	read_color(char *line, int fd, char *rgb, char **tokens);
+
 t_vec3	read_position(char *xyz, char *line, int fd, char **tokens);
+t_vec3	vec3_normalize(t_vec3 v);
+
+double	vec3_length(t_vec3 v);
 
 #endif

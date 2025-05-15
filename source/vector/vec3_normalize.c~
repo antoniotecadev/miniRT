@@ -1,0 +1,32 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   vec3_normalize.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ateca <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/15 13:11:54 by ateca             #+#    #+#             */
+/*   Updated: 2025/05/15 13:11:55 by ateca            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../../include/minirt.h"
+
+t_vec3	vec3_normalize(t_vec3 v)
+{
+	t_vec3	result;
+	double	length;
+
+	length = vec3_length(v);
+	printf("Direction: x=%.1f, y=%.1f, z=%.1f\n", v.x, v.y, v.z);
+	printf("Direction length: %.4f\n", length);
+	if (length == 0)
+		return ((t_vec3){0, 0, 0});
+	result.x = v.x / length;
+	result.y = v.y / length;
+	result.z = v.z / length;
+	length = vec3_length(result);
+	printf("Result: x=%.1f, y=%.2f, z=%.2f\n", result.x, result.y, result.z);
+	printf("Result length: %.4f\n", length);
+	return (result);
+}
