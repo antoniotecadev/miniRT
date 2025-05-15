@@ -37,5 +37,6 @@ int	main(int argc, char **argv)
 		scene.camera.position.y, scene.camera.position.z);
 	printf("  Direction: x=%.1f, y=%.1f, z=%.1f\n", scene.camera.direction.x,
 		scene.camera.direction.y, scene.camera.direction.z);
+	printf("  FOV: %.1f\n", scene.camera.fov);
 	return (0);
 }

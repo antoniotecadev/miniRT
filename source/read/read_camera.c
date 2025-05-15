@@ -12,6 +12,26 @@
 
 #include "../../include/minirt.h"
 
+double	read_field_of_iew(char *fov_str, char *line, int fd, char **tokens)
+{
+	double	fov;
+
+	if (ft_isdouble(fov_str) == 0)
+	{
+		printf("Error: FOV for camera is not number: %s", line);
+		free_tokens(tokens);
+		free_gnl_buffer_and_exit(line, fd);
+	}
+	fov = ft_atof(fov_str);
+	if (fov < 0.0 || fov > 180.0)
+	{
+		printf("Error: FOV for camera must be in the range [0,180]: %s", line);
+		free_tokens(tokens);
+		free_gnl_buffer_and_exit(line, fd);
+	}
+	return (fov);
+}
+
 void	dr_is_valid(char *line, int fd, char **direction_tokens, char **tokens)
 {
 	int	result;
@@ -88,6 +108,7 @@ void	read_camera(char *line, int fd, t_scene *scene)
 	}
 	scene->camera.position = read_position(tokens[1], line, fd, tokens);
 	scene->camera.direction = read_direction(tokens[2], line, fd, tokens);
+	scene->camera.fov = read_field_of_iew(tokens[3], line, fd, tokens);
 	scene->number_camera = 1;
 	free_tokens(tokens);
 }
