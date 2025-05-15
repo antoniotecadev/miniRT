@@ -12,10 +12,23 @@
 
 #include "../../include/minirt.h"
 
+double	read_diameter(char *diameter, char *line, int fd, char **tokens)
+{
+	if (ft_isdouble(diameter) == 0)
+	{
+		printf("Error: Sphere diameter is not number: %s", line);
+		free_tokens(tokens);
+		free_gnl_buffer_and_exit(line, fd);
+	}
+	return (ft_atof(diameter));
+}
+
 void	read_sphere(char *line, int fd, t_scene *scene)
 {
 	char	**tokens;
 	char	*center;
+	char	*diameter;
+	char	*color;
 
 	tokens = ft_split(line, ' ');
 	if (tokens == NULL || number_tokens(tokens) != 4 || tokens[0] == NULL
@@ -26,6 +39,10 @@ void	read_sphere(char *line, int fd, t_scene *scene)
 		free_gnl_buffer_and_exit(line, fd);
 	}
 	center = tokens[1];
+	diameter = tokens[2];
+	color = tokens[3];
 	scene->sphere.center = read_position(center, line, fd, tokens);
+	scene->sphere.diameter = read_diameter(diameter, line, fd, tokens);
+	scene->sphere.color = read_color(line, fd, color, tokens);
 	free_tokens(tokens);
 }

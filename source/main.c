@@ -28,15 +28,21 @@ int	main(int argc, char **argv)
 	printf("  Ratio: %.1f\n", scene.ambient_light.ratio);
 	printf("  Color: R=%d, G=%d, B=%d\n", scene.ambient_light.color.r,
 		scene.ambient_light.color.g, scene.ambient_light.color.b);
-	printf("\nLight:\n");
+	printf("Light:\n");
 	printf("  Position: x=%.1f, y=%.1f, z=%.1f\n", scene.light.position.x,
 		scene.light.position.y, scene.light.position.z);
 	printf("  Brightness: %.1f\n", scene.light.brightness);
-	printf("\nCamera:\n");
+	printf("Camera:\n");
 	printf("  Position: x=%.1f, y=%.1f, z=%.1f\n", scene.camera.position.x,
 		scene.camera.position.y, scene.camera.position.z);
 	printf("  Direction: x=%.1f, y=%.1f, z=%.1f\n", scene.camera.direction.x,
 		scene.camera.direction.y, scene.camera.direction.z);
 	printf("  FOV: %.1f\n", scene.camera.fov);
+	printf("Sphere:\n");
+	printf("  Center: x=%.1f, y=%.1f, z=%.1f\n", scene.sphere.center.x,
+		scene.sphere.center.y, scene.sphere.center.z);
+	printf("  Diameter: %.1f\n", scene.sphere.diameter);
+	printf("  Color: R=%d, G=%d, B=%d\n", scene.sphere.color.r,
+		scene.sphere.color.g, scene.sphere.color.b);
 	return (0);
 }

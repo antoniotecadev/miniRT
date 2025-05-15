@@ -18,7 +18,7 @@ double	read_brightness(char *brightness, char *line, int fd, char **tokens)
 
 	if (ft_isdouble(brightness) == 0)
 	{
-		printf("Error: Brightness is not number: 'brightness': %s", line);
+		printf("Error: Light brightness is not number: %s", line);
 		free_tokens(tokens);
 		free_gnl_buffer_and_exit(line, fd);
 	}
