@@ -48,8 +48,14 @@ typedef struct s_light
 {
 	t_vec3		position;
 	double		brightness;
-	t_color		color;
-}	t_light;
+}		t_light;
+
+typedef struct s_sphere
+{
+	t_vec3	center;
+	double	diameter;
+	t_color	color;
+}		t_sphere;
 
 typedef struct s_scene
 {
@@ -59,12 +65,15 @@ typedef struct s_scene
 	int				number_camera;
 	t_light			light;
 	int				number_light;
+	t_sphere		sphere;
+	int				number_sphere;
 }		t_scene;
 
 void	read_scene(char *file, t_scene *scene);
 void	read_ambient_light(char *line, int fd, t_scene *scene);
 void	read_camera(char *line, int fd, t_scene *scene);
 void	read_light(char *line, int fd, t_scene *scene);
+void	read_sphere(char *line, int fd, t_scene *scene);
 void	free_gnl_buffer_and_exit(char *line, int fd);
 void	free_tokens(char **tokens);
 
