@@ -42,14 +42,14 @@ void	dr_is_valid(char *line, int fd, char **direction_tokens, char **tokens)
 		|| direction_tokens[2] == NULL)
 	{
 		result = 1;
-		printf("Error: Direction format: 'X,Y,Z': %s", line);
+		printf("Error: Direction camera format: 'X,Y,Z': %s", line);
 	}
 	else if (!ft_isdouble(direction_tokens[0])
 		|| !ft_isdouble(direction_tokens[1])
 		|| !ft_isdouble(direction_tokens[2]))
 	{
 		result = 1;
-		printf("Error: Direction is not number: 'X,Y,Z': %s", line);
+		printf("Error: Direction camera is not number: 'X,Y,Z': %s", line);
 	}
 	if (result == 1)
 	{

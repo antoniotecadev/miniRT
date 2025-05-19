@@ -18,6 +18,7 @@ void	initialize_number_scene_element(t_scene *scene)
 	scene->number_camera = 0;
 	scene->number_light = 0;
 	scene->number_sphere = 0;
+	scene->number_plane = 0;
 }
 
 void	check_scene_element(char *line, int *i, int fd, t_scene *scene)
@@ -30,6 +31,8 @@ void	check_scene_element(char *line, int *i, int fd, t_scene *scene)
 		read_light(line, fd, scene);
 	else if (ft_strncmp(&line[*i], "sp", 2) == 0)
 		read_sphere(line, fd, scene);
+	else if (ft_strncmp(&line[*i], "pl", 2) == 0)
+		read_plane(line, fd, scene);
 }
 
 int	is_rt_extension(char *file)

@@ -44,5 +44,12 @@ int	main(int argc, char **argv)
 	printf("  Diameter: %.1f\n", scene.sphere.diameter);
 	printf("  Color: R=%d, G=%d, B=%d\n", scene.sphere.color.r,
 		scene.sphere.color.g, scene.sphere.color.b);
+	printf("Plane:\n");
+	printf("  Point: x=%.1f, y=%.1f, z=%.1f\n", scene.plane.point.x,
+		scene.plane.point.y, scene.plane.point.z);
+	printf("  Normal: x=%.1f, y=%.1f, z=%.1f\n", scene.plane.normal.x,
+		scene.plane.normal.y, scene.plane.normal.z);
+	printf("  Color: R=%d, G=%d, B=%d\n", scene.plane.color.r,
+		scene.plane.color.g, scene.plane.color.b);
 	return (0);
 }

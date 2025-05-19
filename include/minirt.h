@@ -57,6 +57,13 @@ typedef struct s_sphere
 	t_color	color;
 }		t_sphere;
 
+typedef struct s_plane
+{
+	t_vec3	point;
+	t_vec3	normal;
+	t_color	color;
+}		t_plane;
+
 typedef struct s_scene
 {
 	t_ambient_light	ambient_light;
@@ -67,6 +74,8 @@ typedef struct s_scene
 	int				number_light;
 	t_sphere		sphere;
 	int				number_sphere;
+	t_plane			plane;
+	int				number_plane;
 }		t_scene;
 
 void	read_scene(char *file, t_scene *scene);
@@ -74,6 +83,7 @@ void	read_ambient_light(char *line, int fd, t_scene *scene);
 void	read_camera(char *line, int fd, t_scene *scene);
 void	read_light(char *line, int fd, t_scene *scene);
 void	read_sphere(char *line, int fd, t_scene *scene);
+void	read_plane(char *line, int fd, t_scene *scene);
 void	free_gnl_buffer_and_exit(char *line, int fd);
 void	free_tokens(char **tokens);
 
