@@ -36,6 +36,11 @@ void	check_scene_element(char *line, int *i, int fd, t_scene *scene)
 		read_plane(line, fd, scene);
 	else if (ft_strncmp(&line[*i], "cy", 2) == 0)
 		read_cylinder(line, fd, scene);
+	else
+	{
+		printf("Error: Unknown identifier: %s", line);
+		free_gnl_buffer_and_exit(line, fd);
+	}
 }
 
 int	is_rt_extension(char *file)
