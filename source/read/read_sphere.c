@@ -45,4 +45,5 @@ void	read_sphere(char *line, int fd, t_scene *scene)
 	scene->sphere.diameter = read_diameter(diameter, line, fd, tokens);
 	scene->sphere.color = read_color(line, fd, color, tokens);
 	free_tokens(tokens);
+	scene->number_sphere++;
 }

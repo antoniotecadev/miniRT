@@ -91,10 +91,9 @@ t_vec3	read_axis(char *xyz, char *line, int fd, char **tokens)
 void	read_cylinder(char *line, int fd, t_scene *scene)
 {
 	char	**tokens;
-	char	*center;
-	char	*axis;
 	char	*diameter;
 	char	*height;
+	char	*color;
 
 	tokens = ft_split(line, ' ');
 	if (tokens == NULL || number_tokens(tokens) != 6 || tokens[0] == NULL
@@ -105,14 +104,14 @@ void	read_cylinder(char *line, int fd, t_scene *scene)
 		free_tokens(tokens);
 		free_gnl_buffer_and_exit(line, fd);
 	}
-	center = tokens[1];
-	axis = tokens[2];
 	diameter = tokens[3];
 	height = tokens[4];
-	scene->cylinder.center = read_position(center, line, fd, tokens);
-	scene->cylinder.axis = read_axis(axis, line, fd, tokens);
+	color = tokens[5];
+	scene->cylinder.center = read_position(tokens[1], line, fd, tokens);
+	scene->cylinder.axis = read_axis(tokens[2], line, fd, tokens);
 	scene->cylinder.diameter = read_diameter_cy(diameter, line, fd, tokens);
 	scene->cylinder.height = read_height_cy(height, line, fd, tokens);
-	scene->cylinder.color = read_color(line, fd, tokens[5], tokens);
+	scene->cylinder.color = read_color(line, fd, color, tokens);
 	free_tokens(tokens);
+	scene->number_cylinder++;
 }

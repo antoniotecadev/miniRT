@@ -90,4 +90,5 @@ void	read_plane(char *line, int fd, t_scene *scene)
 	scene->plane.normal = read_normal(normal, line, fd, tokens);
 	scene->plane.color = read_color(line, fd, color, tokens);
 	free_tokens(tokens);
+	scene->number_plane++;
 }
