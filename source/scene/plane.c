@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_plane.c                                       :+:      :+:    :+:   */
+/*   plane.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ateca <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 10:28:57 by ateca             #+#    #+#             */
-/*   Updated: 2025/05/19 10:28:58 by ateca            ###   ########.fr       */
+/*   Updated: 2025/05/19 15:48:45 by ateca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minirt.h"
 
-void	normal_is_valid(char *line, int fd, char **normal_tokens, char **tokens)
+static void	is_valid(char *line, int fd, char **normal_tokens, char **tokens)
 {
 	int	result;
 
@@ -39,13 +39,13 @@ void	normal_is_valid(char *line, int fd, char **normal_tokens, char **tokens)
 	}
 }
 
-t_vec3	read_normal(char *xyz, char *line, int fd, char **tokens)
+static t_vec3	get_normal(char *xyz, char *line, int fd, char **tokens)
 {
 	t_vec3	normal;
 	char	**normal_tokens;
 
 	normal_tokens = ft_split(xyz, ',');
-	normal_is_valid(line, fd, normal_tokens, tokens);
+	is_valid(line, fd, normal_tokens, tokens);
 	normal.x = ft_atof(normal_tokens[0]);
 	normal.y = ft_atof(normal_tokens[1]);
 	normal.z = ft_atof(normal_tokens[2]);
@@ -68,7 +68,7 @@ t_vec3	read_normal(char *xyz, char *line, int fd, char **tokens)
 	return (normal);
 }
 
-void	read_plane(char *line, int fd, t_scene *scene)
+void	plane(char *line, int fd, t_scene *scene)
 {
 	char	**tokens;
 	char	*point;
@@ -86,9 +86,9 @@ void	read_plane(char *line, int fd, t_scene *scene)
 	point = tokens[1];
 	normal = tokens[2];
 	color = tokens[3];
-	scene->plane.point = read_position(point, line, fd, tokens);
-	scene->plane.normal = read_normal(normal, line, fd, tokens);
-	scene->plane.color = read_color(line, fd, color, tokens);
+	scene->plane.point = get_position(point, line, fd, tokens);
+	scene->plane.normal = get_normal(normal, line, fd, tokens);
+	scene->plane.color = get_color(line, fd, color, tokens);
 	free_tokens(tokens);
 	scene->number_plane++;
 }

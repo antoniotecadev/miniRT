@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_sphere.c                                      :+:      :+:    :+:   */
+/*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ateca <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 15:48:04 by ateca             #+#    #+#             */
-/*   Updated: 2025/05/15 15:48:06 by ateca            ###   ########.fr       */
+/*   Updated: 2025/05/19 15:48:58 by ateca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minirt.h"
 
-double	read_diameter(char *diameter, char *line, int fd, char **tokens)
+double	get_diameter(char *diameter, char *line, int fd, char **tokens)
 {
 	if (ft_isdouble(diameter) == 0)
 	{
@@ -23,7 +23,7 @@ double	read_diameter(char *diameter, char *line, int fd, char **tokens)
 	return (ft_atof(diameter));
 }
 
-void	read_sphere(char *line, int fd, t_scene *scene)
+void	sphere(char *line, int fd, t_scene *scene)
 {
 	char	**tokens;
 	char	*center;
@@ -41,9 +41,9 @@ void	read_sphere(char *line, int fd, t_scene *scene)
 	center = tokens[1];
 	diameter = tokens[2];
 	color = tokens[3];
-	scene->sphere.center = read_position(center, line, fd, tokens);
-	scene->sphere.diameter = read_diameter(diameter, line, fd, tokens);
-	scene->sphere.color = read_color(line, fd, color, tokens);
+	scene->sphere.center = get_position(center, line, fd, tokens);
+	scene->sphere.diameter = get_diameter(diameter, line, fd, tokens);
+	scene->sphere.color = get_color(line, fd, color, tokens);
 	free_tokens(tokens);
 	scene->number_sphere++;
 }

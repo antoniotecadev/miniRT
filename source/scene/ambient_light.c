@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_ambient_light.c                               :+:      :+:    :+:   */
+/*   ambient_light.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ateca <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 15:57:45 by ateca             #+#    #+#             */
-/*   Updated: 2025/05/07 12:03:14 by ateca            ###   ########.fr       */
+/*   Updated: 2025/05/19 15:47:13 by ateca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minirt.h"
 
-double	read_ratio(char *ratio_param, char *line, int fd, char **tokens)
+static double	get_ratio(char *ratio_param, char *line, int fd, char **tokens)
 {
 	double	ratio;
 
@@ -32,7 +32,7 @@ double	read_ratio(char *ratio_param, char *line, int fd, char **tokens)
 	return (ratio);
 }
 
-void	read_ambient_light(char *line, int fd, t_scene *scene)
+void	ambient_light(char *line, int fd, t_scene *scene)
 {
 	char	**tokens;
 	char	*ratio;
@@ -54,8 +54,8 @@ void	read_ambient_light(char *line, int fd, t_scene *scene)
 	}
 	ratio = tokens[1];
 	color = tokens[2];
-	scene->ambient_light.ratio = read_ratio(ratio, line, fd, tokens);
-	scene->ambient_light.color = read_color(line, fd, color, tokens);
+	scene->ambient_light.ratio = get_ratio(ratio, line, fd, tokens);
+	scene->ambient_light.color = get_color(line, fd, color, tokens);
 	scene->number_ambient_light = 1;
 	free_tokens(tokens);
 }

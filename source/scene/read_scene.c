@@ -12,7 +12,7 @@
 
 #include "../../include/minirt.h"
 
-void	initialize_number_scene_element(t_scene *scene)
+static void	initialize_number_scene_element(t_scene *scene)
 {
 	scene->number_ambient_light = 0;
 	scene->number_camera = 0;
@@ -22,20 +22,20 @@ void	initialize_number_scene_element(t_scene *scene)
 	scene->number_cylinder = 0;
 }
 
-void	check_scene_element(char *line, int *i, int fd, t_scene *scene)
+static void	check_scene_element(char *line, int *i, int fd, t_scene *scene)
 {
 	if (ft_strncmp(&line[*i], "A", 1) == 0)
-		read_ambient_light(line, fd, scene);
+		ambient_light(line, fd, scene);
 	else if (ft_strncmp(&line[*i], "C", 1) == 0)
-		read_camera(line, fd, scene);
+		camera(line, fd, scene);
 	else if (ft_strncmp(&line[*i], "L", 1) == 0)
-		read_light(line, fd, scene);
+		light(line, fd, scene);
 	else if (ft_strncmp(&line[*i], "sp", 2) == 0)
-		read_sphere(line, fd, scene);
+		sphere(line, fd, scene);
 	else if (ft_strncmp(&line[*i], "pl", 2) == 0)
-		read_plane(line, fd, scene);
+		plane(line, fd, scene);
 	else if (ft_strncmp(&line[*i], "cy", 2) == 0)
-		read_cylinder(line, fd, scene);
+		cylinder(line, fd, scene);
 	else
 	{
 		printf("Error: Unknown identifier: %s", line);
@@ -43,7 +43,7 @@ void	check_scene_element(char *line, int *i, int fd, t_scene *scene)
 	}
 }
 
-int	is_rt_extension(char *file)
+static int	is_rt_extension(char *file)
 {
 	char	*dot;
 
@@ -53,7 +53,7 @@ int	is_rt_extension(char *file)
 	return (0);
 }
 
-int	open_and_validate_file(char *file)
+static int	open_and_validate_file(char *file)
 {
 	int	fd;
 

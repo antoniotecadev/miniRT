@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_camera.c                                      :+:      :+:    :+:   */
+/*   camera.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ateca <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 17:51:52 by ateca             #+#    #+#             */
-/*   Updated: 2025/05/14 17:51:54 by ateca            ###   ########.fr       */
+/*   Updated: 2025/05/19 15:47:36 by ateca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minirt.h"
 
-double	read_field_of_iew(char *fov_str, char *line, int fd, char **tokens)
+static double	get_field_iew(char *fov_str, char *line, int fd, char **tokens)
 {
 	double	fov;
 
@@ -32,34 +32,33 @@ double	read_field_of_iew(char *fov_str, char *line, int fd, char **tokens)
 	return (fov);
 }
 
-void	dr_is_valid(char *line, int fd, char **direction_tokens, char **tokens)
+static void	dr_is_valid(char *line, int fd, char **direc_tokens, char **tokens)
 {
 	int	result;
 
 	result = 0;
-	if (direction_tokens == NULL || number_tokens(direction_tokens) != 3
-		|| direction_tokens[0] == NULL || direction_tokens[1] == NULL
-		|| direction_tokens[2] == NULL)
+	if (direc_tokens == NULL || number_tokens(direc_tokens) != 3
+		|| direc_tokens[0] == NULL || direc_tokens[1] == NULL
+		|| direc_tokens[2] == NULL)
 	{
 		result = 1;
 		printf("Error: Direction camera format: 'X,Y,Z': %s", line);
 	}
-	else if (!ft_isdouble(direction_tokens[0])
-		|| !ft_isdouble(direction_tokens[1])
-		|| !ft_isdouble(direction_tokens[2]))
+	else if (!ft_isdouble(direc_tokens[0]) || !ft_isdouble(direc_tokens[1])
+		|| !ft_isdouble(direc_tokens[2]))
 	{
 		result = 1;
 		printf("Error: Direction camera is not number: 'X,Y,Z': %s", line);
 	}
 	if (result == 1)
 	{
-		free_tokens(direction_tokens);
+		free_tokens(direc_tokens);
 		free_tokens(tokens);
 		free_gnl_buffer_and_exit(line, fd);
 	}
 }
 
-t_vec3	read_direction(char *xyz, char *line, int fd, char **tokens)
+static t_vec3	get_direction(char *xyz, char *line, int fd, char **tokens)
 {
 	t_vec3	direction;
 	char	**direction_tokens;
@@ -88,7 +87,7 @@ t_vec3	read_direction(char *xyz, char *line, int fd, char **tokens)
 	return (direction);
 }
 
-void	read_camera(char *line, int fd, t_scene *scene)
+void	camera(char *line, int fd, t_scene *scene)
 {
 	char	**tokens;
 
@@ -106,9 +105,9 @@ void	read_camera(char *line, int fd, t_scene *scene)
 		free_tokens(tokens);
 		free_gnl_buffer_and_exit(line, fd);
 	}
-	scene->camera.position = read_position(tokens[1], line, fd, tokens);
-	scene->camera.direction = read_direction(tokens[2], line, fd, tokens);
-	scene->camera.fov = read_field_of_iew(tokens[3], line, fd, tokens);
+	scene->camera.position = get_position(tokens[1], line, fd, tokens);
+	scene->camera.direction = get_direction(tokens[2], line, fd, tokens);
+	scene->camera.fov = get_field_iew(tokens[3], line, fd, tokens);
 	scene->number_camera = 1;
 	free_tokens(tokens);
 }

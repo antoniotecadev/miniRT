@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_cylinder.c                                    :+:      :+:    :+:   */
+/*   cylinder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ateca <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 12:50:33 by ateca             #+#    #+#             */
-/*   Updated: 2025/05/19 12:50:35 by ateca            ###   ########.fr       */
+/*   Updated: 2025/05/19 15:47:47 by ateca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minirt.h"
 
-double	read_diameter_cy(char *diameter, char *line, int fd, char **tokens)
+static double	get_diameter(char *diameter, char *line, int fd, char **tokens)
 {
 	if (ft_isdouble(diameter) == 0)
 	{
@@ -23,7 +23,7 @@ double	read_diameter_cy(char *diameter, char *line, int fd, char **tokens)
 	return (ft_atof(diameter));
 }
 
-double	read_height_cy(char *height, char *line, int fd, char **tokens)
+static double	get_height(char *height, char *line, int fd, char **tokens)
 {
 	if (ft_isdouble(height) == 0)
 	{
@@ -34,7 +34,7 @@ double	read_height_cy(char *height, char *line, int fd, char **tokens)
 	return (ft_atof(height));
 }
 
-void	axi_is_valid(char *line, int fd, char **axis_tokens, char **tokens)
+static void	axi_is_valid(char *line, int fd, char **axis_tokens, char **tokens)
 {
 	int	result;
 
@@ -60,7 +60,7 @@ void	axi_is_valid(char *line, int fd, char **axis_tokens, char **tokens)
 	}
 }
 
-t_vec3	read_axis(char *xyz, char *line, int fd, char **tokens)
+static t_vec3	get_axis(char *xyz, char *line, int fd, char **tokens)
 {
 	t_vec3	axi;
 	char	**axis_tokens;
@@ -88,7 +88,7 @@ t_vec3	read_axis(char *xyz, char *line, int fd, char **tokens)
 	return (axi);
 }
 
-void	read_cylinder(char *line, int fd, t_scene *scene)
+void	cylinder(char *line, int fd, t_scene *scene)
 {
 	char	**tokens;
 	char	*diameter;
@@ -107,11 +107,11 @@ void	read_cylinder(char *line, int fd, t_scene *scene)
 	diameter = tokens[3];
 	height = tokens[4];
 	color = tokens[5];
-	scene->cylinder.center = read_position(tokens[1], line, fd, tokens);
-	scene->cylinder.axis = read_axis(tokens[2], line, fd, tokens);
-	scene->cylinder.diameter = read_diameter_cy(diameter, line, fd, tokens);
-	scene->cylinder.height = read_height_cy(height, line, fd, tokens);
-	scene->cylinder.color = read_color(line, fd, color, tokens);
+	scene->cylinder.center = get_position(tokens[1], line, fd, tokens);
+	scene->cylinder.axis = get_axis(tokens[2], line, fd, tokens);
+	scene->cylinder.diameter = get_diameter(diameter, line, fd, tokens);
+	scene->cylinder.height = get_height(height, line, fd, tokens);
+	scene->cylinder.color = get_color(line, fd, color, tokens);
 	free_tokens(tokens);
 	scene->number_cylinder++;
 }

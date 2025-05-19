@@ -12,11 +12,11 @@
 
 NAME = miniRT
 
-SRC = ./source/main.c ./source/read/read_scene.c ./source/read/read_ambient_light.c \
-      ./source/utility/free_utils.c ./source/utility/tokens_utils.c \
-      ./source/read/read_color.c ./source/read/read_light.c ./source/read/read_camera.c \
-      ./source/read/read_position.c ./source/vector/vec3_length.c ./source/read/read_plane.c \
-      ./source/vector/vec3_normalize.c ./source/read/read_sphere.c ./source/read/read_cylinder.c
+SRC = ./source/main.c ./source/scene/read_scene.c ./source/scene/ambient_light.c \
+      ./source/scene/light.c ./source/scene/camera.c ./source/scene/sphere.c \
+      ./source/scene/cylinder.c ./source/scene/plane.c source/scene/get_color.c \
+      ./source/util/free_utils.c ./source/util/tokens_utils.c source/scene/get_position.c \
+      ././source/vector/vec3_length.c source/vector/vec3_normalize.c
 OBJ = ${SRC:.c=.o}
 
 CC = cc

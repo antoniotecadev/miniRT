@@ -90,20 +90,20 @@ typedef struct s_scene
 }		t_scene;
 
 void	read_scene(char *file, t_scene *scene);
-void	read_ambient_light(char *line, int fd, t_scene *scene);
-void	read_camera(char *line, int fd, t_scene *scene);
-void	read_light(char *line, int fd, t_scene *scene);
-void	read_sphere(char *line, int fd, t_scene *scene);
-void	read_plane(char *line, int fd, t_scene *scene);
-void	read_cylinder(char *line, int fd, t_scene *scene);
+void	ambient_light(char *line, int fd, t_scene *scene);
+void	camera(char *line, int fd, t_scene *scene);
+void	light(char *line, int fd, t_scene *scene);
+void	sphere(char *line, int fd, t_scene *scene);
+void	plane(char *line, int fd, t_scene *scene);
+void	cylinder(char *line, int fd, t_scene *scene);
 void	free_gnl_buffer_and_exit(char *line, int fd);
 void	free_tokens(char **tokens);
 
 int		number_tokens(char **tokens);
 
-t_color	read_color(char *line, int fd, char *rgb, char **tokens);
+t_color	get_color(char *line, int fd, char *rgb, char **tokens);
 
-t_vec3	read_position(char *xyz, char *line, int fd, char **tokens);
+t_vec3	get_position(char *xyz, char *line, int fd, char **tokens);
 t_vec3	vec3_normalize(t_vec3 v);
 
 double	vec3_length(t_vec3 v);

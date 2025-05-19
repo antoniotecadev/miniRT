@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_position.c                                    :+:      :+:    :+:   */
+/*   get_position.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ateca <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 18:09:51 by ateca             #+#    #+#             */
-/*   Updated: 2025/05/14 18:09:53 by ateca            ###   ########.fr       */
+/*   Updated: 2025/05/19 15:48:13 by ateca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minirt.h"
 
-void	pos_is_valid(char *line, int fd, char **position_token, char **tokens)
+static void	is_valid(char *line, int fd, char **position_token, char **tokens)
 {
 	int	result;
 
@@ -38,13 +38,13 @@ void	pos_is_valid(char *line, int fd, char **position_token, char **tokens)
 	}
 }
 
-t_vec3	read_position(char *xyz, char *line, int fd, char **tokens)
+t_vec3	get_position(char *xyz, char *line, int fd, char **tokens)
 {
 	t_vec3	position;
 	char	**position_tokens;
 
 	position_tokens = ft_split(xyz, ',');
-	pos_is_valid(line, fd, position_tokens, tokens);
+	is_valid(line, fd, position_tokens, tokens);
 	position.x = ft_atof(position_tokens[0]);
 	position.y = ft_atof(position_tokens[1]);
 	position.z = ft_atof(position_tokens[2]);
