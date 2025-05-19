@@ -19,6 +19,7 @@ void	initialize_number_scene_element(t_scene *scene)
 	scene->number_light = 0;
 	scene->number_sphere = 0;
 	scene->number_plane = 0;
+	scene->number_cylinder = 0;
 }
 
 void	check_scene_element(char *line, int *i, int fd, t_scene *scene)
@@ -33,6 +34,8 @@ void	check_scene_element(char *line, int *i, int fd, t_scene *scene)
 		read_sphere(line, fd, scene);
 	else if (ft_strncmp(&line[*i], "pl", 2) == 0)
 		read_plane(line, fd, scene);
+	else if (ft_strncmp(&line[*i], "cy", 2) == 0)
+		read_cylinder(line, fd, scene);
 }
 
 int	is_rt_extension(char *file)

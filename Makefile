@@ -16,7 +16,7 @@ SRC = ./source/main.c ./source/read/read_scene.c ./source/read/read_ambient_ligh
       ./source/utility/free_utils.c ./source/utility/tokens_utils.c \
       ./source/read/read_color.c ./source/read/read_light.c ./source/read/read_camera.c \
       ./source/read/read_position.c ./source/vector/vec3_length.c ./source/read/read_plane.c \
-      ./source/vector/vec3_normalize.c ./source/read/read_sphere.c 
+      ./source/vector/vec3_normalize.c ./source/read/read_sphere.c ./source/read/read_cylinder.c
 OBJ = ${SRC:.c=.o}
 
 CC = cc

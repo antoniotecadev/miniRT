@@ -51,5 +51,14 @@ int	main(int argc, char **argv)
 		scene.plane.normal.y, scene.plane.normal.z);
 	printf("  Color: R=%d, G=%d, B=%d\n", scene.plane.color.r,
 		scene.plane.color.g, scene.plane.color.b);
+	printf("Cylinder:\n");
+	printf("  Center: x=%.1f, y=%.1f, z=%.1f\n", scene.cylinder.center.x,
+		scene.cylinder.center.y, scene.cylinder.center.z);
+	printf("  Axis: x=%.1f, y=%.1f, z=%.1f\n", scene.cylinder.axis.x,
+		scene.cylinder.axis.y, scene.cylinder.axis.z);
+	printf("  Diameter: %.1f\n", scene.cylinder.diameter);
+	printf("  Height: %.1f\n", scene.cylinder.height);
+	printf("  Color: R=%d, G=%d, B=%d\n", scene.cylinder.color.r,
+		scene.cylinder.color.g, scene.cylinder.color.b);
 	return (0);
 }
