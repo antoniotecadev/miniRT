@@ -60,5 +60,22 @@ int	main(int argc, char **argv)
 	printf("  Height: %.1f\n", scene.cylinder.height);
 	printf("  Color: R=%d, G=%d, B=%d\n", scene.cylinder.color.r,
 		scene.cylinder.color.g, scene.cylinder.color.b);
+	printf("\n\n");
+	
+	t_object_list *current = scene.object_list;
+	while (current != NULL)
+	{
+		if (current->type == SPHERE)
+		{
+			t_sphere *sphere = (t_sphere *)current->object;
+			printf("Sphere - Center: (%.2f, %.2f, %.2f), Diameter: %.2f\n",
+			sphere->center.x,
+			sphere->center.y,
+			sphere->center.z,
+			sphere->diameter);
+		}
+		current = current->next;
+	}
+	free_objects(scene.object_list);
 	return (0);
 }

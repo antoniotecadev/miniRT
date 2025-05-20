@@ -73,6 +73,20 @@ typedef struct s_cylinder
 	t_color	color;
 }		t_cylinder;
 
+typedef enum e_object_type
+{
+	PLANE,
+	SPHERE,
+	CYLINDER
+}		t_object_type;
+
+typedef struct s_object_list
+{
+	t_object_type			type;
+	void					*object;
+	struct s_object_list	*next;
+}		t_object_list;
+
 typedef struct s_scene
 {
 	t_ambient_light	ambient_light;
@@ -87,17 +101,23 @@ typedef struct s_scene
 	int				number_plane;
 	t_cylinder		cylinder;
 	int				number_cylinder;
+	t_object_list	*object_list;
 }		t_scene;
 
 void	read_scene(char *file, t_scene *scene);
+void	add_object_to_list(t_scene *scene, t_object_type type, void *object);
+
 void	ambient_light(char *line, int fd, t_scene *scene);
 void	camera(char *line, int fd, t_scene *scene);
 void	light(char *line, int fd, t_scene *scene);
+
 void	sphere(char *line, int fd, t_scene *scene);
 void	plane(char *line, int fd, t_scene *scene);
 void	cylinder(char *line, int fd, t_scene *scene);
+
 void	free_gnl_buffer_and_exit(char *line, int fd);
 void	free_tokens(char **tokens);
+void	free_objects(t_object_list *object_list);
 
 int		number_tokens(char **tokens);
 

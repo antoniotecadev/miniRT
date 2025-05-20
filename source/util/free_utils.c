@@ -41,3 +41,18 @@ void	free_tokens(char **tokens)
 	}
 	free(tokens);
 }
+
+void	free_objects(t_object_list *object_list)
+{
+	t_object_list	*next;
+	t_object_list	*current;
+
+	current = object_list;
+	while (current != NULL)
+	{
+		next = current->next;
+		free(current->object);
+		free(current);
+		current = next;
+	}
+}

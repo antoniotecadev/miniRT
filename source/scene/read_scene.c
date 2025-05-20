@@ -20,6 +20,7 @@ static void	initialize_number_scene_element(t_scene *scene)
 	scene->number_sphere = 0;
 	scene->number_plane = 0;
 	scene->number_cylinder = 0;
+	scene->object_list = NULL;
 }
 
 static void	check_scene_element(char *line, int *i, int fd, t_scene *scene)

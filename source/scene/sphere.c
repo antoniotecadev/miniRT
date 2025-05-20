@@ -25,10 +25,11 @@ double	get_diameter(char *diameter, char *line, int fd, char **tokens)
 
 void	sphere(char *line, int fd, t_scene *scene)
 {
-	char	**tokens;
-	char	*center;
-	char	*diameter;
-	char	*color;
+	char		**tokens;
+	char		*center;
+	char		*diameter;
+	char		*color;
+	t_sphere	*sphere;
 
 	tokens = ft_split(line, ' ');
 	if (tokens == NULL || number_tokens(tokens) != 4 || tokens[0] == NULL
@@ -46,4 +47,7 @@ void	sphere(char *line, int fd, t_scene *scene)
 	scene->sphere.color = get_color(line, fd, color, tokens);
 	free_tokens(tokens);
 	scene->number_sphere++;
+	sphere = malloc(sizeof(t_sphere));
+	*sphere = scene->sphere;
+	add_object_to_list(scene, SPHERE, sphere);
 }
