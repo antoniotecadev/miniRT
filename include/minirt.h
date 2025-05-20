@@ -13,9 +13,24 @@
 #ifndef MINIRT_H
 # define MINIRT_H
 
+# include "../minilibx/mlx.h"
 # include "../libft/libft.h"
 # include <stdio.h>
 # include <math.h>
+
+# define WIDTH 1920
+# define HEIGHT 1080
+
+typedef struct s_data
+{
+	void	*mlx;
+	void	*win;
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_data;
 
 typedef struct s_vec3
 {

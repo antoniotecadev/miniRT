@@ -30,26 +30,36 @@ SRC = source/main.c \
 OBJ = ${SRC:.c=.o}
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I./libft/include
+CFLAGS = -Wall -Wextra -Werror
 
 LIBFT = ./libft/libft.a
 LIBFTSRC = ./libft
 
+MLX = ./minilibx/libmlx.a
+MLXSRC = ./minilibx
+
+LIBRARIES = -L$(MLXSRC) -lmlx -L/usr/lib -lXext -lX11 -lm -lz
+
 all: $(NAME)
 
-$(NAME): $(OBJ) $(LIBFT)
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(LIBFT) -lm
+$(NAME): $(OBJ) $(LIBFT) $(MLX)
+	$(CC) $(CFLAGS) $(OBJ) $(LIBRARIES) -o $(NAME) $(LIBFT) $(MLX)
 	
+$(MLX):
+	@make -C $(MLXSRC)
+
 $(LIBFT):
 	@make -C $(LIBFTSRC)
 
 clean:
 	rm -f $(OBJ)
 	@make clean -C $(LIBFTSRC)
+	@make clean -C $(MLXSRC)
 
 fclean: clean
 	rm -f $(NAME)
 	@make fclean -C $(LIBFTSRC)
+	@make clean -C $(MLXSRC)
 
 re: fclean all
 
