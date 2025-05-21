@@ -30,6 +30,7 @@ SRC = source/main.c \
 		source/render/get_ray_direction.c \
 		source/render/ray_trace.c \
 		source/intersect/intersect_sphere.c \
+		source/intersect/shade_sphere.c \
 		source/win/events.c
 OBJ = ${SRC:.c=.o}
 

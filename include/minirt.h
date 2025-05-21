@@ -131,6 +131,13 @@ typedef struct s_ray_var
 	t_vec3	direction;
 }		t_ray_var;
 
+typedef struct s_shade_object
+{
+	t_vec3	origin;
+	t_vec3	ray_dir;
+	double	distance_min;
+}		t_shade_object;
+
 void	read_scene(char *file, t_scene *scene);
 void	add_object_to_list(t_scene *scene, t_object_type type, void *object);
 
@@ -157,15 +164,20 @@ int		close_window_x(t_data *img);
 t_color	get_color(char *line, int fd, char *rgb, char **tokens);
 t_color	ray_trace(t_scene *scene, t_vec3 origin, t_vec3 dir);
 
+t_color	shade_sphere(t_scene *scene, t_sphere *sphere, t_shade_object s);
+
 t_vec3	vec3_normalize(t_vec3 v);
 t_vec3	vec3_cross(t_vec3 a, t_vec3 b);
 t_vec3	vec3_sub(t_vec3 a, t_vec3 b);
+t_vec3	vec3_scale(t_vec3 v, double s);
+t_vec3	vec3_add(t_vec3 a, t_vec3 b);
 
 t_vec3	get_position(char *xyz, char *line, int fd, char **tokens);
 t_vec3	get_ray_direction(t_camera camera, int i, int j);
 
 double	vec3_length(t_vec3 v);
 double	vec3_dot(t_vec3 a, t_vec3 b);
+
 double	intersect_sphere(t_vec3 ray_origin, t_vec3 ray_dir, t_sphere *sphere);
 
 #endif
