@@ -56,3 +56,14 @@ void	free_objects(t_object_list *object_list)
 		current = next;
 	}
 }
+
+void	free_mlx(t_data *img)
+{
+	if (img->img)
+		mlx_destroy_image(img->mlx, img->img);
+	if (img->win)
+		mlx_destroy_window(img->mlx, img->win);
+	mlx_destroy_display(img->mlx);
+	free(img->mlx);
+	exit(0);
+}

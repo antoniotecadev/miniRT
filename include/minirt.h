@@ -133,8 +133,12 @@ void	cylinder(char *line, int fd, t_scene *scene);
 void	free_gnl_buffer_and_exit(char *line, int fd);
 void	free_tokens(char **tokens);
 void	free_objects(t_object_list *object_list);
+void	free_mlx(t_data *img);
 
 int		number_tokens(char **tokens);
+
+int		events_press_esc(int keycode, t_data *img);
+int		close_window_x(t_data *img);
 
 t_color	get_color(char *line, int fd, char *rgb, char **tokens);
 

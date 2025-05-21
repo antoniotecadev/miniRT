@@ -26,7 +26,8 @@ SRC = source/main.c \
 		source/vector/vec3_normalize.c \
 		source/util/object_utils.c \
 		source/util/free_utils.c \
-		source/util/tokens_utils.c 
+		source/util/tokens_utils.c \
+		source/win/events.c
 OBJ = ${SRC:.c=.o}
 
 CC = cc

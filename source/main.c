@@ -12,30 +12,6 @@
 
 #include "../include/minirt.h"
 
-void	free_mlx(t_data *img)
-{
-	if (img->img)
-		mlx_destroy_image(img->mlx, img->img);
-	if (img->win)
-		mlx_destroy_window(img->mlx, img->win);
-	mlx_destroy_display(img->mlx);
-	free(img->mlx);
-	exit(0);
-}
-
-int	events_press_esc(int keycode, t_data *img)
-{
-	if (keycode == 65307)
-		free_mlx(img);
-	return (0);
-}
-
-int	close_window_x(t_data *img)
-{
-	free_mlx(img);
-	return (0);
-}
-
 int	main(int argc, char **argv)
 {
 	char	*file;
