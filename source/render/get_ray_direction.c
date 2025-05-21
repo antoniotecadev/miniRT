@@ -17,7 +17,7 @@ t_vec3	get_up_world(t_vec3 forward)
 	if (fabs(forward.x) == 0 && fabs(forward.z) == 0)
 		return ((t_vec3){0, 0, 1});
 	else
-		return ((t_vec3){0, 1, 1});
+		return ((t_vec3){0, 1, 0});
 }
 
 t_vec3	get_ray_direction(t_camera camera, int i, int j)
