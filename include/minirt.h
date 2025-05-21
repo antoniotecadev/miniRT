@@ -18,20 +18,6 @@
 # include <stdio.h>
 # include <math.h>
 
-# define WIDTH 1920
-# define HEIGHT 1080
-
-typedef struct s_data
-{
-	void	*mlx;
-	void	*win;
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}				t_data;
-
 typedef struct s_vec3
 {
 	double	x;
@@ -119,6 +105,32 @@ typedef struct s_scene
 	t_object_list	*object_list;
 }		t_scene;
 
+# define WIDTH 1920
+# define HEIGHT 1080
+
+typedef struct s_data
+{
+	void	*mlx;
+	void	*win;
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+	t_scene	scene;
+}				t_data;
+
+typedef struct s_ray_var
+{
+	double	x;
+	double	y;
+	t_vec3	up;
+	t_vec3	right;
+	t_vec3	forward;
+	t_vec3	up_world;
+	t_vec3	direction;
+}		t_ray_var;
+
 void	read_scene(char *file, t_scene *scene);
 void	add_object_to_list(t_scene *scene, t_object_type type, void *object);
 
@@ -129,6 +141,8 @@ void	light(char *line, int fd, t_scene *scene);
 void	sphere(char *line, int fd, t_scene *scene);
 void	plane(char *line, int fd, t_scene *scene);
 void	cylinder(char *line, int fd, t_scene *scene);
+
+void	render_scene(t_scene *scene, t_data *img);
 
 void	free_gnl_buffer_and_exit(char *line, int fd);
 void	free_tokens(char **tokens);
@@ -141,9 +155,13 @@ int		events_press_esc(int keycode, t_data *img);
 int		close_window_x(t_data *img);
 
 t_color	get_color(char *line, int fd, char *rgb, char **tokens);
+t_color	ray_trace(t_scene *scene, t_vec3 origin, t_vec3 dir);
+
+t_vec3	vec3_normalize(t_vec3 v);
+t_vec3	vec3_cross(t_vec3 a, t_vec3 b);
 
 t_vec3	get_position(char *xyz, char *line, int fd, char **tokens);
-t_vec3	vec3_normalize(t_vec3 v);
+t_vec3	get_ray_direction(t_camera camera, int i, int j);
 
 double	vec3_length(t_vec3 v);
 
