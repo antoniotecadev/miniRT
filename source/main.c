@@ -35,20 +35,6 @@ int	main(int argc, char **argv)
 	mlx_put_image_to_window(img.mlx, img.win, img.img, 0, 0);
 	mlx_hook(img.win, 2, 1L << 0, events_press_esc, &img);
 	mlx_hook(img.win, 17, 0L, close_window_x, &img);
-	t_object_list *current = scene.object_list;
-	while (current != NULL)
-	{
-		if (current->type == SPHERE)
-		{
-			t_sphere *sphere = (t_sphere *)current->object;
-			printf("Sphere - Center: (%.2f, %.2f, %.2f), Diameter: %.2f\n",
-			sphere->center.x,
-			sphere->center.y,
-			sphere->center.z,
-			sphere->diameter);
-		}
-		current = current->next;
-	}
 	mlx_loop(img.mlx);
 	return (0);
 }

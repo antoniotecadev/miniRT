@@ -159,10 +159,13 @@ t_color	ray_trace(t_scene *scene, t_vec3 origin, t_vec3 dir);
 
 t_vec3	vec3_normalize(t_vec3 v);
 t_vec3	vec3_cross(t_vec3 a, t_vec3 b);
+t_vec3	vec3_sub(t_vec3 a, t_vec3 b);
 
 t_vec3	get_position(char *xyz, char *line, int fd, char **tokens);
 t_vec3	get_ray_direction(t_camera camera, int i, int j);
 
 double	vec3_length(t_vec3 v);
+double	vec3_dot(t_vec3 a, t_vec3 b);
+double	intersect_sphere(t_vec3 ray_origin, t_vec3 ray_dir, t_sphere *sphere);
 
 #endif

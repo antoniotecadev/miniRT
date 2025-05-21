@@ -22,15 +22,14 @@ SRC = source/main.c \
 		source/scene/plane.c \
 		source/scene/get_color.c \
 		source/scene/get_position.c \
-		source/vector/vec3_cross.c \
-		source/vector/vec3_length.c \
-		source/vector/vec3_normalize.c \
 		source/util/object_utils.c \
+		source/util/vec3_utils.c \
 		source/util/free_utils.c \
 		source/util/tokens_utils.c \
 		source/render/render_scene.c \
 		source/render/get_ray_direction.c \
 		source/render/ray_trace.c \
+		source/intersect/intersect_sphere.c \
 		source/win/events.c
 OBJ = ${SRC:.c=.o}
 
