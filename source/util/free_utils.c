@@ -68,5 +68,6 @@ void	free_mlx(t_data *img)
 		mlx_destroy_display(img->mlx);
 		free(img->mlx);
 	}
+	free_objects(img->scene.object_list);
 	exit(0);
 }

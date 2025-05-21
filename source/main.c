@@ -33,6 +33,7 @@ int	main(int argc, char **argv)
 	mlx_put_image_to_window(img.mlx, img.win, img.img, 0, 0);
 	mlx_hook(img.win, 2, 1L << 0, events_press_esc, &img);
 	mlx_hook(img.win, 17, 0L, close_window_x, &img);
+	img.scene = scene;
 	t_object_list *current = scene.object_list;
 	while (current != NULL)
 	{
@@ -47,7 +48,6 @@ int	main(int argc, char **argv)
 		}
 		current = current->next;
 	}
-	free_objects(scene.object_list);
 	mlx_loop(img.mlx);
 	return (0);
 }
