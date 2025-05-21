@@ -63,7 +63,10 @@ void	free_mlx(t_data *img)
 		mlx_destroy_image(img->mlx, img->img);
 	if (img->win)
 		mlx_destroy_window(img->mlx, img->win);
-	mlx_destroy_display(img->mlx);
-	free(img->mlx);
+	if (img->mlx)
+	{
+		mlx_destroy_display(img->mlx);
+		free(img->mlx);
+	}
 	exit(0);
 }
