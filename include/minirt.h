@@ -16,6 +16,7 @@
 # include "../minilibx/mlx.h"
 # include "../libft/libft.h"
 # include <stdio.h>
+# include <float.h>
 # include <math.h>
 
 typedef struct s_vec3
@@ -164,7 +165,7 @@ int		close_window_x(t_data *img);
 t_color	get_color(char *line, int fd, char *rgb, char **tokens);
 t_color	ray_trace(t_scene *scene, t_vec3 origin, t_vec3 dir);
 
-t_color	shade_sphere(t_scene *scene, t_sphere *sphere, t_shade_object s);
+//t_color	shade_sphere(t_scene *scene, t_sphere *sphere, t_shade_object s);
 
 t_vec3	vec3_normalize(t_vec3 v);
 t_vec3	vec3_cross(t_vec3 a, t_vec3 b);

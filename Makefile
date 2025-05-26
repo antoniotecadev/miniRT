@@ -24,6 +24,7 @@ SRC = source/main.c \
 		source/scene/get_position.c \
 		source/util/object_utils.c \
 		source/util/vec3_utils.c \
+		source/util/vec3_utils_extra.c \
 		source/util/free_utils.c \
 		source/util/tokens_utils.c \
 		source/render/render_scene.c \
