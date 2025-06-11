@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minirt.h"
+#include "../../../include/minirt.h"
 
 static double	quadratic_formula(double a, double b, double c)
 {

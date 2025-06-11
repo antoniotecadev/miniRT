@@ -30,14 +30,18 @@ SRC = source/main.c \
 		source/render/render_scene.c \
 		source/render/get_ray_direction.c \
 		source/render/ray_trace.c \
-		source/intersect/intersect_sphere.c \
-		source/intersect/shade_sphere.c \
+		source/render/intersect/intersect_sphere.c \
+		source/render/shade/shade_sphere.c \
+		source/render/intersect/intersect_plane.c \
+		source/render/shade/shade_plane.c \
 		source/win/events.c
-OBJ = ${SRC:.c=.o}
+
+OBJ = $(SRC:.c=.o)
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
+INCLUDE = -Iinclude
 LIBFT = ./libft/libft.a
 LIBFTSRC = ./libft
 
@@ -49,7 +53,7 @@ LIBRARIES = -L$(MLXSRC) -lmlx -L/usr/lib -lXext -lX11 -lm -lz
 all: $(NAME)
 
 $(NAME): $(OBJ) $(LIBFT) $(MLX)
-	$(CC) $(CFLAGS) $(OBJ) $(LIBRARIES) -o $(NAME) $(LIBFT) $(MLX)
+	$(CC) $(CFLAGS) $(OBJ) $(LIBRARIES) $(INCLUDE) -o $(NAME) $(LIBFT) $(MLX)
 	
 $(MLX):
 	@make -C $(MLXSRC)

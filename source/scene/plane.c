@@ -74,6 +74,7 @@ void	plane(char *line, int fd, t_scene *scene)
 	char	*point;
 	char	*normal;
 	char	*color;
+	t_plane	*plane;
 
 	tokens = ft_split(line, ' ');
 	if (tokens == NULL || number_tokens(tokens) != 4 || tokens[0] == NULL
@@ -91,4 +92,7 @@ void	plane(char *line, int fd, t_scene *scene)
 	scene->plane.color = get_color(line, fd, color, tokens);
 	free_tokens(tokens);
 	scene->number_plane++;
+    plane = malloc(sizeof(t_plane));
+    *plane = scene->plane; 
+    add_object_to_list(scene, PLANE, plane);
 }
