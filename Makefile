@@ -31,9 +31,11 @@ SRC = source/main.c \
 		source/render/get_ray_direction.c \
 		source/render/ray_trace.c \
 		source/render/intersect/intersect_sphere.c \
-		source/render/shade/shade_sphere.c \
+		source/render/intersect/intersect_cylinder.c \
 		source/render/intersect/intersect_plane.c \
+		source/render/shade/shade_sphere.c \
 		source/render/shade/shade_plane.c \
+		source/render/shade/shade_cylinder.c \
 		source/win/events.c
 
 OBJ = $(SRC:.c=.o)

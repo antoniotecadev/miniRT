@@ -168,7 +168,9 @@ t_color	ray_trace(t_scene *scene, t_vec3 origin, t_vec3 dir);
 
 t_color shade_sphere(t_scene *scene, t_sphere *sphere, t_vec3 origin, t_vec3 dir, double t);
 double intersect_plane(t_vec3 origin, t_vec3 ray_direction, t_plane *plane);
+double intersect_cylinder(t_vec3 origin, t_vec3 ray_direction, t_cylinder *cylinder);
 t_color shade_plane(t_scene *scene, t_plane *plane, t_vec3 origin, t_vec3 dir, double t);
+t_color shade_cylinder(t_scene *scene, t_cylinder *cylinder, t_vec3 origin, t_vec3 dir, double t);
 
 t_vec3	vec3_normalize(t_vec3 v);
 t_vec3	vec3_cross(t_vec3 a, t_vec3 b);

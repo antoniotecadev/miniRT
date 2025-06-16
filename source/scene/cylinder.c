@@ -94,7 +94,8 @@ void	cylinder(char *line, int fd, t_scene *scene)
 	char	*diameter;
 	char	*height;
 	char	*color;
-
+	t_cylinder *cylinder;
+	
 	tokens = ft_split(line, ' ');
 	if (tokens == NULL || number_tokens(tokens) != 6 || tokens[0] == NULL
 		|| tokens[1] == NULL || tokens[2] == NULL || tokens[3] == NULL
@@ -114,4 +115,7 @@ void	cylinder(char *line, int fd, t_scene *scene)
 	scene->cylinder.color = get_color(line, fd, color, tokens);
 	free_tokens(tokens);
 	scene->number_cylinder++;
+	cylinder = malloc(sizeof(t_cylinder));
+	*cylinder = scene->cylinder;
+	add_object_to_list(scene,CYLINDER, cylinder);
 }
