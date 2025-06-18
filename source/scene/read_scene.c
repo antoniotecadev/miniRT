@@ -49,7 +49,7 @@ static int	is_rt_extension(char *file)
 	char	*dot;
 
 	dot = ft_strrchr(file, '.');
-	if (dot && ft_strcmp(dot, ".rt") == 0)
+	if (dot && ft_strcmp(dot, ".rt") == 0 && ft_strcmp(file, ".rt") != 0)
 		return (1);
 	return (0);
 }
