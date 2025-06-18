@@ -66,7 +66,6 @@ typedef struct s_plane
 	t_color	color;
 }		t_plane;
 
-
 typedef struct s_cylinder
 {
 	t_vec3	center;
@@ -140,6 +139,14 @@ typedef struct s_shade_object
 	double	distance_min;
 }		t_shade_object;
 
+typedef struct s_color_result
+{
+	t_color	color;
+	t_color	diffuse;
+	t_color	ambient;
+	t_color	finale;
+}		t_color_result;
+
 void	read_scene(char *file, t_scene *scene);
 void	add_object_to_list(t_scene *scene, t_object_type type, void *object);
 
@@ -166,11 +173,14 @@ int		close_window_x(t_data *img);
 t_color	get_color(char *line, int fd, char *rgb, char **tokens);
 t_color	ray_trace(t_scene *scene, t_vec3 origin, t_vec3 dir);
 
-t_color shade_sphere(t_scene *scene, t_sphere *sphere, t_vec3 origin, t_vec3 dir, double t);
-double intersect_plane(t_vec3 origin, t_vec3 ray_direction, t_plane *plane);
-double intersect_cylinder(t_vec3 origin, t_vec3 ray_direction, t_cylinder *cylinder);
-t_color shade_plane(t_scene *scene, t_plane *plane, t_vec3 origin, t_vec3 dir, double t);
-t_color shade_cylinder(t_scene *scene, t_cylinder *cylinder, t_vec3 origin, t_vec3 dir, double t);
+double	intersect_plane(t_vec3 origin, t_vec3 ray_direction, t_plane *plane);
+double	intersect_cylinder(t_vec3 origin, t_vec3 ray_direction,
+			t_cylinder *cylinder);
+
+t_color	shade_sphere(t_scene *scene, t_sphere *sphere, t_shade_object shade);
+t_color	shade_plane(t_scene *scene, t_plane *plane, t_shade_object shade);
+t_color	shade_cylinder(t_scene *scene, t_cylinder *cylinder,
+			t_shade_object shade);
 
 t_vec3	vec3_normalize(t_vec3 v);
 t_vec3	vec3_cross(t_vec3 a, t_vec3 b);

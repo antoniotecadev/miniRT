@@ -12,14 +12,14 @@
 
 #include "../../include/minirt.h"
 
-t_color	shade_object(t_scene *scene, t_object_list *obj, t_shade_object s)
+t_color	shade_object(t_scene *scene, t_object_list *obj, t_shade_object shade)
 {
 	if (obj && obj->type == SPHERE)
-		return (shade_sphere(scene, (t_sphere *)obj->object, s.origin, s.ray_dir, s.distance_min));
+		return (shade_sphere(scene, (t_sphere *)obj->object, shade));
 	if (obj && obj->type == PLANE)
-		 return (shade_plane(scene, (t_plane *)obj->object, s.origin, s.ray_dir, s.distance_min));
+		return (shade_plane(scene, (t_plane *)obj->object, shade));
 	if (obj && obj->type == CYLINDER)
-		return (shade_cylinder(scene, (t_cylinder *)obj->object, s.origin, s.ray_dir, s.distance_min));
+		return (shade_cylinder(scene, (t_cylinder *)obj->object, shade));
 	return ((t_color){30, 30, 30});
 }
 
@@ -28,9 +28,9 @@ double	hit_object(t_object_list *obj, t_vec3 origin, t_vec3 dir)
 	if (obj->type == SPHERE)
 		return (intersect_sphere(origin, dir, (t_sphere *)obj->object));
 	else if (obj->type == PLANE)
-	 	  return (intersect_plane(origin, dir, (t_plane *)obj->object));
+		return (intersect_plane(origin, dir, (t_plane *)obj->object));
 	else if (obj->type == CYLINDER)
- 		return (intersect_cylinder(origin, dir, (t_cylinder *)obj->object));
+		return (intersect_cylinder(origin, dir, (t_cylinder *)obj->object));
 	return (-1.0);
 }
 
