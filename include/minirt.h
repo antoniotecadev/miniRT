@@ -141,6 +141,8 @@ typedef struct s_shade_object
 
 typedef struct s_color_result
 {
+	double	diff;
+	double	light_distance;
 	t_color	color;
 	t_color	diffuse;
 	t_color	ambient;
@@ -169,6 +171,9 @@ int		number_tokens(char **tokens);
 
 int		events_press_esc(int keycode, t_data *img);
 int		close_window_x(t_data *img);
+
+int		is_in_shadow(t_scene *scene, t_vec3 origin, t_vec3 light_dir,
+			double max_distance);
 
 t_color	get_color(char *line, int fd, char *rgb, char **tokens);
 t_color	ray_trace(t_scene *scene, t_vec3 origin, t_vec3 dir);
